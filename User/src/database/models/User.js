@@ -10,6 +10,12 @@ const UserSchema = new Schema({
     address: [
         { type: Schema.Types.ObjectId, ref: 'address', require: true }
     ],
+    role: {
+        type: String, enum: ['instructor', 'admin', 'learner'],
+        default: 'learner',
+        required: true
+    },
+    courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
     cart: [
         {
             product: {
