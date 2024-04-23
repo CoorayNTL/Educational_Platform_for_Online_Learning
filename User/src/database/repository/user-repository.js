@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const { userModel, AddressModel } = require('../models');
+const { UserModel, AddressModel } = require('../models');
 
 //Dealing with data base operations
 class UserRepository {
 
     async Createuser({ email, password, phone, salt }) {
 
-        const user = new userModel({
+        const user = new UserModel({
             email,
             password,
             salt,
@@ -20,7 +20,7 @@ class UserRepository {
 
     async CreateAddress({ _id, street, postalCode, city, country }) {
 
-        const profile = await userModel.findById(_id);
+        const profile = await UserModel.findById(_id);
 
         if (profile) {
 
@@ -40,13 +40,13 @@ class UserRepository {
     }
 
     async Finduser({ email }) {
-        const existinguser = await userModel.findOne({ email: email });
+        const existinguser = await UserModel.findOne({ email: email });
         return existinguser;
     }
 
     async FinduserById({ id }) {
 
-        const existinguser = await userModel.findById(id).populate('address');
+        const existinguser = await UserModel.findById(id).populate('address');
         // existinguser.cart = [];
         // existinguser.orders = [];
         // existinguser.wishlist = [];
@@ -57,7 +57,7 @@ class UserRepository {
 
     async Wishlist(userId) {
 
-        const profile = await userModel.findById(userId).populate('wishlist');
+        const profile = await UserModel.findById(userId).populate('wishlist');
 
         return profile.wishlist;
     }
@@ -68,7 +68,7 @@ class UserRepository {
             _id, name, desc, price, available, banner
         };
 
-        const profile = await userModel.findById(userId).populate('wishlist');
+        const profile = await UserModel.findById(userId).populate('wishlist');
 
         if (profile) {
 
@@ -105,7 +105,7 @@ class UserRepository {
     async AddCartItem(userId, { _id, name, price, banner }, qty, isRemove) {
 
 
-        const profile = await userModel.findById(userId).populate('cart');
+        const profile = await UserModel.findById(userId).populate('cart');
 
 
         if (profile) {
@@ -150,7 +150,7 @@ class UserRepository {
 
     async AddOrderToProfile(userId, order) {
 
-        const profile = await userModel.findById(userId);
+        const profile = await UserModel.findById(userId);
 
         if (profile) {
 
