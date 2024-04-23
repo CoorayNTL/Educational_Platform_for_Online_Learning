@@ -1,11 +1,11 @@
-const CustomerService = require('../services/user-service');
+const UserService = require('../services/user-service');
 const UserAuth = require('./middlewares/auth');
 const { SubscribeMessage } = require('../utils');
 
 
 module.exports = (app, channel) => {
 
-    const service = new CustomerService();
+    const service = new UserService();
 
     // To listen
     SubscribeMessage(channel, service);
@@ -65,6 +65,6 @@ module.exports = (app, channel) => {
     });
 
     app.get('/whoami', (req, res, next) => {
-        return res.status(200).json({ msg: '/user : I am Customer Service' })
+        return res.status(200).json({ msg: '/user : I am User Service' })
     })
 }

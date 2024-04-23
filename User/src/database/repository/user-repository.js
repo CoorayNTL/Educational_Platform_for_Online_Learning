@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const { CustomerModel, AddressModel } = require('../models');
+const { userModel, AddressModel } = require('../models');
 
 //Dealing with data base operations
-class CustomerRepository {
+class UserRepository {
 
-    async CreateCustomer({ email, password, phone, salt }) {
+    async Createuser({ email, password, phone, salt }) {
 
-        const user = new CustomerModel({
+        const user = new userModel({
             email,
             password,
             salt,
@@ -14,13 +14,13 @@ class CustomerRepository {
             address: []
         })
 
-        const customerResult = await user.save();
-        return customerResult;
+        const userResult = await user.save();
+        return userResult;
     }
 
     async CreateAddress({ _id, street, postalCode, city, country }) {
 
-        const profile = await CustomerModel.findById(_id);
+        const profile = await userModel.findById(_id);
 
         if (profile) {
 
@@ -39,36 +39,36 @@ class CustomerRepository {
         return await profile.save();
     }
 
-    async FindCustomer({ email }) {
-        const existingCustomer = await CustomerModel.findOne({ email: email });
-        return existingCustomer;
+    async Finduser({ email }) {
+        const existinguser = await userModel.findOne({ email: email });
+        return existinguser;
     }
 
-    async FindCustomerById({ id }) {
+    async FinduserById({ id }) {
 
-        const existingCustomer = await CustomerModel.findById(id).populate('address');
-        // existingCustomer.cart = [];
-        // existingCustomer.orders = [];
-        // existingCustomer.wishlist = [];
+        const existinguser = await userModel.findById(id).populate('address');
+        // existinguser.cart = [];
+        // existinguser.orders = [];
+        // existinguser.wishlist = [];
 
-        // await existingCustomer.save();
-        return existingCustomer;
+        // await existinguser.save();
+        return existinguser;
     }
 
-    async Wishlist(customerId) {
+    async Wishlist(userId) {
 
-        const profile = await CustomerModel.findById(customerId).populate('wishlist');
+        const profile = await userModel.findById(userId).populate('wishlist');
 
         return profile.wishlist;
     }
 
-    async AddWishlistItem(customerId, { _id, name, desc, price, available, banner }) {
+    async AddWishlistItem(userId, { _id, name, desc, price, available, banner }) {
 
         const product = {
             _id, name, desc, price, available, banner
         };
 
-        const profile = await CustomerModel.findById(customerId).populate('wishlist');
+        const profile = await userModel.findById(userId).populate('wishlist');
 
         if (profile) {
 
@@ -102,10 +102,10 @@ class CustomerRepository {
     }
 
 
-    async AddCartItem(customerId, { _id, name, price, banner }, qty, isRemove) {
+    async AddCartItem(userId, { _id, name, price, banner }, qty, isRemove) {
 
 
-        const profile = await CustomerModel.findById(customerId).populate('cart');
+        const profile = await userModel.findById(userId).populate('cart');
 
 
         if (profile) {
@@ -148,9 +148,9 @@ class CustomerRepository {
 
 
 
-    async AddOrderToProfile(customerId, order) {
+    async AddOrderToProfile(userId, order) {
 
-        const profile = await CustomerModel.findById(customerId);
+        const profile = await userModel.findById(userId);
 
         if (profile) {
 
@@ -174,4 +174,4 @@ class CustomerRepository {
 
 }
 
-module.exports = CustomerRepository;
+module.exports = UserRepository;

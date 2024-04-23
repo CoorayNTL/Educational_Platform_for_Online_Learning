@@ -1,4 +1,4 @@
 module.exports = {
-    CustomerModel: require('./Customer'),
+    CustomerModel: require('./User'),
     AddressModel: require('./Address')
 }
