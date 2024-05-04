@@ -64,7 +64,7 @@ class UserRepository {
 
     async AddWishlistItem(userId, { _id, name, desc, price, available, banner }) {
 
-        const product = {
+        const course = {
             _id, name, desc, price, available, banner
         };
 
@@ -77,7 +77,7 @@ class UserRepository {
             if (wishlist.length > 0) {
                 let isExist = false;
                 wishlist.map(item => {
-                    if (item._id.toString() === product._id.toString()) {
+                    if (item._id.toString() === course._id.toString()) {
                         const index = wishlist.indexOf(item);
                         wishlist.splice(index, 1);
                         isExist = true;
@@ -85,11 +85,11 @@ class UserRepository {
                 });
 
                 if (!isExist) {
-                    wishlist.push(product);
+                    wishlist.push(course);
                 }
 
             } else {
-                wishlist.push(product);
+                wishlist.push(course);
             }
 
             profile.wishlist = wishlist;
@@ -111,7 +111,7 @@ class UserRepository {
         if (profile) {
 
             const cartItem = {
-                product: { _id, name, price, banner },
+                course: { _id, name, price, banner },
                 unit: qty,
             };
 
@@ -120,7 +120,7 @@ class UserRepository {
             if (cartItems.length > 0) {
                 let isExist = false;
                 cartItems.map(item => {
-                    if (item.product._id.toString() === _id.toString()) {
+                    if (item.course._id.toString() === _id.toString()) {
 
                         if (isRemove) {
                             cartItems.splice(cartItems.indexOf(item), 1);
@@ -170,6 +170,26 @@ class UserRepository {
     }
 
 
+    async AddEnrolledCourses(userId, enrolledCourses) {
+
+        const profile = await UserModel.findById(userId);
+
+        if (profile) {
+
+            if (profile.enrolledCourses == undefined) {
+                profile.enrolledCourses = []
+            }
+            profile.enrolledCourses.push(order);
+
+            profile.cart = [];
+
+            const profileResult = await profile.save();
+
+            return profileResult;
+        }
+
+        throw new Error('Unable to add to order!');
+    }
 
 
 }

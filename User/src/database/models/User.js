@@ -15,10 +15,9 @@ const UserSchema = new Schema({
         default: 'learner',
         required: true
     },
-    courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
     cart: [
         {
-            product: {
+            course: {
                 _id: { type: String, require: true },
                 name: { type: String },
                 banner: { type: String },
@@ -43,7 +42,15 @@ const UserSchema = new Schema({
             amount: { type: String },
             date: { type: Date, default: Date.now() }
         }
+    ],
+    enrolledCourses: [
+        {
+            _id: { type: String, required: true },
+            startDate: { type: Date },
+            endDate: { type: Date }
+        }
     ]
+
 }, {
     toJSON: {
         transform(doc, ret) {
@@ -54,5 +61,20 @@ const UserSchema = new Schema({
     },
     timestamps: true
 });
+
+// Method to enroll in a course
+UserSchema.methods.enrollCourse = function (courseId) {
+    if (!this.enrolledCourses.includes(courseId)) {
+        this.enrolledCourses.push(courseId);
+        return this.save();
+    }
+    return Promise.resolve(this);
+};
+
+// Method to cancel course enrollment
+UserSchema.methods.cancelCourseEnrollment = function (courseId) {
+    this.enrolledCourses = this.enrolledCourses.filter(id => id !== courseId);
+    return this.save();
+};
 
 module.exports = mongoose.model('User', UserSchema);
