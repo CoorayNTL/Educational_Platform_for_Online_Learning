@@ -101,7 +101,6 @@ class UserRepository {
 
     }
 
-
     async AddCartItem(userId, { _id, name, price, banner }, qty, isRemove) {
 
 
@@ -146,8 +145,6 @@ class UserRepository {
         throw new Error('Unable to add to cart!');
     }
 
-
-
     async AddOrderToProfile(userId, order) {
 
         const profile = await UserModel.findById(userId);
@@ -169,28 +166,52 @@ class UserRepository {
         throw new Error('Unable to add to order!');
     }
 
+    async AddEnrolledCourses(userId, { _id, startDate, endDate }) {
 
-    async AddEnrolledCourses(userId, enrolledCourses) {
+        const course = {
+            _id, startDate, endDate
+        };
 
-        const profile = await UserModel.findById(userId);
+        const profile = await UserModel.findById(userId).populate('enrolledCourses');
 
         if (profile) {
 
-            if (profile.enrolledCourses == undefined) {
-                profile.enrolledCourses = []
+            let enrolledCourses = profile.enrolledCourses;
+
+            if (enrolledCourses.length > 0) {
+                let isExist = false;
+                enrolledCourses.map(item => {
+                    if (item._id.toString() === course._id.toString()) {
+                        const index = enrolledCourses.indexOf(item);
+                        enrolledCourses.splice(index, 1);
+                        isExist = true;
+                    }
+                });
+
+                if (!isExist) {
+                    enrolledCourses.push(course);
+                }
+
+            } else {
+                enrolledCourses.push(course);
             }
-            profile.enrolledCourses.push(order);
 
-            profile.cart = [];
-
-            const profileResult = await profile.save();
-
-            return profileResult;
+            profile.enrolledCourses = enrolledCourses;
         }
 
-        throw new Error('Unable to add to order!');
+        const profileResult = await profile.save();
+
+        return profileResult.enrolledCourses;
+
     }
 
+    async GetEnrolledCourses(userId) {
+
+        const profile = await UserModel.findById(userId).populate('enrolledCourses');
+
+        return profile.enrolledCourses;
+
+    }
 
 }
 

@@ -42,7 +42,7 @@ class CourseService {
     return FormatData(courses);
   }
 
-  async getCoursePayload(userId, { courseId, status }, event) {
+  async GetCoursePayload(userId, { courseId, status }, event) {
     const course = await this.repository.findCourseById(courseId);
 
     if (course) {

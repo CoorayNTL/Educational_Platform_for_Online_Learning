@@ -10,7 +10,6 @@ module.exports = (app, channel) => {
     // To listen
     SubscribeMessage(channel, service);
 
-
     app.post('/signup', async (req, res, next) => {
         const { email, password, phone } = req.body;
         const { data } = await service.SignUp({ email, password, phone });
@@ -29,10 +28,21 @@ module.exports = (app, channel) => {
 
     });
 
+    app.post('/logout', UserAuth, async (req, res, next) => {
+            
+            const { _id } = req.user;
+    
+            const { data } = await service.Logout({ _id });
+    
+            res.json(data);
+    
+        });
+
+        
+
     app.post('/address', UserAuth, async (req, res, next) => {
 
         const { _id } = req.user;
-
 
         const { street, postalCode, city, country } = req.body;
 
@@ -58,6 +68,7 @@ module.exports = (app, channel) => {
         return res.json(data);
     });
 
+    
     app.get('/wishlist', UserAuth, async (req, res, next) => {
         const { _id } = req.user;
         const { data } = await service.GetWishList(_id);

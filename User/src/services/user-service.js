@@ -19,12 +19,29 @@ class userService {
             const validPassword = await ValidatePassword(password, existinguser.password, existinguser.salt);
             if (validPassword) {
                 const token = await GenerateSignature({ email: existinguser.email, _id: existinguser._id });
+                console.log('Token', token);
+                console.log('Existing User login', existinguser);
                 return FormateData({ id: existinguser._id, token });
             }
         }
 
         return FormateData(null);
     }
+
+    async Logout(userInputs) {
+
+        const { _id } = userInputs;
+
+        const existinguser = await this.repository.FinduserById({ _id });
+
+        if (existinguser) {
+            return FormateData({ msg: 'Logged Out' });
+        }
+
+        return FormateData({ msg: 'Error' });
+    }
+
+
 
     async SignUp(userInputs) {
 
@@ -89,6 +106,17 @@ class userService {
         return FormateData(orderResult);
     }
 
+    async AddEnrolledCourses(userId, { _id, startDate, endDate }) {
+        const enrolledCourses = await this.repository.AddEnrolledCourses(userId, { _id, startDate, endDate });
+        return FormateData(enrolledCourses);
+    }
+
+    async GetEnrolledCourses(userId) {
+
+        const enrolledCourses = await this.repository.GetEnrolledCourses(userId);
+        return FormateData(enrolledCourses);
+    }
+
     async SubscribeEvents(payload) {
 
         console.log('Triggering.... user Events')
@@ -112,6 +140,9 @@ class userService {
                 break;
             case 'CREATE_ORDER':
                 this.ManageOrder(userId, order);
+                break;
+            case 'ENROLL_COURSE_SERVICE':
+                this.AddEnrolledCourses(userId, course);
                 break;
             default:
                 break;
