@@ -6,6 +6,7 @@ const {
   APP_SECRET,
   EXCHANGE_NAME,
   SHOPPING_SERVICE,
+  ENROLL_COURSE_SERVICE,
   MSG_QUEUE_URL,
 } = require("../config");
 

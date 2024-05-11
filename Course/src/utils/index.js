@@ -76,6 +76,10 @@ module.exports.PublishShoppingEvent = async (payload) => {
   axios.post(`http://shopping:8003/app-events/`, {
     payload,
   });
+
+  axios.post(`http://enrollment:8003/app-events/`, {
+    payload,
+  });
 };
 
 //Message Broker

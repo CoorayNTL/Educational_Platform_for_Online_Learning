@@ -13,7 +13,7 @@ class CourseRepository {
       enrollment,
       price,
       discount,
-      banner,
+      banner, 
       category,
       published
     });

@@ -129,7 +129,7 @@ module.exports = (app, channel) => {
   app.get("/whoami", (req, res, next) => {
     return res
       .status(200)
-      .json({ msg: "/ or /products : I am products Service" });
+      .json({ msg: "/ or /products : I am products Service" }); 
   });
 
   //get Top products and category
