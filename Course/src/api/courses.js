@@ -159,9 +159,9 @@ module.exports = (app, channel) => {
     //SubscribeMessage(channel, courseService);
 }
 
-// Path: Course/src/api/products.js
-// Compare this snippet from CourseEnrollment/src/database/repository/CourseRepository.js:
-// const { Course } = require("../models");
+// Path: course/src/api/products.js
+// Compare this snippet from courseenrollment/src/database/repository/CourseRepository.js:
+// const { course } = require("../models");
 
 
 

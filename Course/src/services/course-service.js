@@ -1,6 +1,6 @@
 const { CourseRepository } = require("../database");
 const { FormateData } = require("../utils");
-// All business logic for Course management will be here
+// All business logic for course management will be here
 class CourseService {
 
   constructor() {
@@ -52,7 +52,7 @@ class CourseService {
 
       return FormateData(payload);
     } else {
-      return FormateData({ error: 'Course not available' });
+      return FormateData({ error: 'course not available' });
     }
   }
 }

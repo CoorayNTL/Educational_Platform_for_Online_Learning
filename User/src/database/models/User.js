@@ -77,4 +77,4 @@ UserSchema.methods.cancelCourseEnrollment = function (courseId) {
     return this.save();
 };
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('user', UserSchema);

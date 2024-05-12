@@ -1,4 +1,4 @@
-version: "3"
+version: "2.26.1"
 services:
   nosql-db:
     image: mvertes/alpine-mongo
@@ -14,11 +14,11 @@ services:
     ports:
       - '5672:5672'
 
-  Course:
+  course:
     build:
       dockerfile: Dockerfile
-      context: ./Course
-    container_name: Course
+      context: ./course
+    container_name: course
     ports:
       - "8006:8006"
     restart: always
@@ -27,15 +27,15 @@ services:
       - "rabbitmq"
     volumes:
       - .:/app
-      - /app/courses/node_modules
+      - /app/course/node_modules
 
     env_file:
-      - ./courses/.env.dev
-  CourseEnrollment:
+      - ./course/.env.dev
+  courseenrollment:
     build:
       dockerfile: Dockerfile
-      context: ./CourseEnrollment
-    container_name: CourseEnrollment
+      context: ./courseenrollment
+    container_name: courseenrollment
     ports:
       - "8003:8003"
     restart: always
@@ -44,14 +44,14 @@ services:
       - "rabbitmq"
     volumes:
       - .:/app
-      - /app/coursebuy/node_modules
+      - /app/courseenrollment/node_modules
     env_file:
-      - ./coursebuy/.env.dev
-  User:
+      - ./courseenrollment/.env.dev
+  user:
     build:
       dockerfile: Dockerfile
-      context: ./User
-    container_name: User
+      context: ./user
+    container_name: user
     ports:
       - "8001:8001"
     restart: always
@@ -63,11 +63,11 @@ services:
       - /app/user/node_modules
     env_file:
       - ./user/.env.dev
-  Payment:
+  payment:
     build:
       dockerfile: Dockerfile
-      context: ./Payment
-    container_name: Payment
+      context: ./payment
+    container_name: payment
     ports:
       - "8001:8001"
     restart: always
@@ -84,8 +84,8 @@ services:
       dockerfile: Dockerfile
       context: ./proxy
     depends_on:
-      - courses
-      - coursebuy
+      - course
+      - courseenrollment
       - user
       - payment
     ports:

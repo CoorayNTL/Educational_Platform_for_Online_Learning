@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const Course = require("../models/Course");
+const course = require("../models/course");
 
-// Handling database operations for Course data
+// Handling database operations for course data
 class CourseRepository {
 
   async createCourse({ title, description, instructorId, content, enrollment, price, discount, banner, category, published }) {
-    const course = new Course({
+    const course = new course({
       title,
       description,
       instructorId,
@@ -23,24 +23,24 @@ class CourseRepository {
   }
 
   async findAllCourses() {
-    return await Course.find().populate('content.videos').populate('RatingAndReview');
+    return await course.find().populate('content.videos').populate('RatingAndReview');
   }
 
   async findCourseById(id) {
-    return await Course.findById(id).populate('content.videos').populate('RatingAndReview');
+    return await course.findById(id).populate('content.videos').populate('RatingAndReview');
   }
 
   async findCoursesByCategory(category) {
-    const courses = await Course.find({ category }).populate('content.videos').populate('RatingAndReview');
+    const courses = await course.find({ category }).populate('content.videos').populate('RatingAndReview');
     return courses;
   }
 
   async updateCourseById(id, updateData) {
-    return await Course.findByIdAndUpdate(id, updateData, { new: true });
+    return await course.findByIdAndUpdate(id, updateData, { new: true });
   }
 
   async deleteCourseById(id) {
-    return await Course.findByIdAndDelete(id);
+    return await course.findByIdAndDelete(id);
   }
 }
 

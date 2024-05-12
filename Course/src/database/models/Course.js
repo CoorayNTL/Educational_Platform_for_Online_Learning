@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const CourseSchema = new Schema({
     title: String,
     description: String,
-    instructorId: String, // Reference to User ID
+    instructorId: String, // Reference to user ID
     content: {
         lectureNotes: [{ title: String, content: String }],
         videos: [{ type: Schema.Types.ObjectId, ref: 'Videos' }],
@@ -40,4 +40,4 @@ const CourseSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Course', CourseSchema);
+module.exports = mongoose.model('course', CourseSchema);

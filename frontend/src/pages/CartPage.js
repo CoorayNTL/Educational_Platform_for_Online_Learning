@@ -26,7 +26,7 @@ const CartPage = () => {
           <div className='cart-grid-left'>
             <div className='flex flex-wrap flex-between'>
               <div className='cart-count-info'>
-                <span className='fw-7 fs-18'>{total_items}</span> Course in Cart
+                <span className='fw-7 fs-18'>{total_items}</span> course in Cart
               </div>
               <button type = "button" className='cart-clear-btn flex fs-15 fw-6 text' onClick={() => clearCart()}>
                 <MdClear className='text-pink' />

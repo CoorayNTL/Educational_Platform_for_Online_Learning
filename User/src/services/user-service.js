@@ -20,7 +20,7 @@ class userService {
             if (validPassword) {
                 const token = await GenerateSignature({ email: existinguser.email, _id: existinguser._id });
                 console.log('Token', token);
-                console.log('Existing User login', existinguser);
+                console.log('Existing user login', existinguser);
                 return FormateData({ id: existinguser._id, token });
             }
         }

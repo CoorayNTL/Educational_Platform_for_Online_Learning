@@ -11,5 +11,5 @@ app.use('/', (req,res,next) => {
 
 
 app.listen(8002, () => {
-    console.log('Course is Listening to Port 8002')
+    console.log('course is Listening to Port 8002')
 })
