@@ -1,6 +1,5 @@
 const { CourseRepository } = require("../database");
 const { FormateData } = require("../utils");
-
 // All business logic for Course management will be here
 class CourseService {
 
