@@ -48,7 +48,7 @@ class CourseBuyService {
         return FormateData(order);
     }
 
-    async subscribeEvents(payload) {
+    async SubscribeEvents(payload) {
         payload = JSON.parse(payload);
         const { event, data } = payload;
         const { userId, course, qty } = data;

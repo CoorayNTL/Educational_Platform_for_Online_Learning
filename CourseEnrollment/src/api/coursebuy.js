@@ -2,12 +2,13 @@ const CourseBuyService = require("../services/CourseBuyService");
 const { PublishMessage } = require("../utils");
 const UserAuth = require('./middlewares/auth');
 const { USER_SERVICE } = require('../config');
+const { PublishCustomerEvent, SubscribeMessage } = require("../utils");
 
 module.exports = (app, channel) => {
     
     const service = new CourseBuyService();
 
-    SubscribeMessage(channel, service);
+        SubscribeMessage(channel, service);
 
     app.post('/coursebuy', UserAuth, async (req, res, next) => {
         const { _id } = req.user;

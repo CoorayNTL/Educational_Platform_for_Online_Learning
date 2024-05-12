@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     ],
     role: {
         type: String, enum: ['instructor', 'admin', 'learner'],
-        default: 'learner',
+        default: 'instructor',
         required: true
     },
     cart: [
