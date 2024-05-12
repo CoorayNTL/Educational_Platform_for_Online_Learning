@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /app/shopping
+WORKDIR /app/course-enrollment
 
 COPY package.json .
 

@@ -42,7 +42,6 @@ class userService {
     }
 
 
-
     async SignUp(userInputs) {
 
         const { email, password, phone } = userInputs;

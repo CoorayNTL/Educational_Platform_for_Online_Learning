@@ -19,7 +19,6 @@ module.exports = (app, channel) => {
     });
 
     app.post('/login', async (req, res, next) => {
-
         const { email, password } = req.body;
 
         const { data } = await service.SignIn({ email, password });

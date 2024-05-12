@@ -9,7 +9,7 @@ const STATUS_CODES = {
 class AppError extends Error {
     constructor(name,statusCode,description, isOperational, errorStack, logingErrorResponse){
         super(description);
-        Object.setPrototypeOf(this,new.target.prototype);
+        Object.setPrototypeOf(this,new.target.prototype);  
         this.name = name;
         this.statusCode = statusCode;
         this.isOperational = isOperational;

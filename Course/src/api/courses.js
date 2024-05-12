@@ -156,7 +156,7 @@ module.exports = (app, channel) => {
 
 
     // To listen
-    SubscribeMessage(channel, courseService);
+    //SubscribeMessage(channel, courseService);
 }
 
 // Path: Course/src/api/products.js

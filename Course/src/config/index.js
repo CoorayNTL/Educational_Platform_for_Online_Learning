@@ -14,7 +14,7 @@ module.exports = {
   BASE_URL: process.env.BASE_URL,
   EXCHANGE_NAME: process.env.EXCHANGE_NAME,
   MSG_QUEUE_URL: process.env.MSG_QUEUE_URL,
-  USER_SERVICE: "customer_service",
-  SHOPPING_SERVICE: "course_service",
+  USER_SERVICE: "user_service",
+  COURSE_SERVICE: "course_service",
   ENROLL_COURSE_SERVICE: "enroll_course_service",
 };

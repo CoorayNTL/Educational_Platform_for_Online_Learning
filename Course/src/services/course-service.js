@@ -1,5 +1,5 @@
 const { CourseRepository } = require("../database");
-const { FormatData } = require("../utils");
+const { FormateData } = require("../utils");
 
 // All business logic for Course management will be here
 class CourseService {
@@ -10,7 +10,7 @@ class CourseService {
 
   async createCourse(courseInputs) {
     const courseResult = await this.repository.createCourse(courseInputs);
-    return FormatData(courseResult);
+    return FormateData(courseResult);
   }
 
   async getCourses() {
@@ -21,7 +21,7 @@ class CourseService {
       categories[category] = category;
     });
 
-    return FormatData({
+    return FormateData({
       courses,
       categories: Object.keys(categories)
     });
@@ -29,17 +29,17 @@ class CourseService {
 
   async getCourseDescription(courseId) {
     const course = await this.repository.findCourseById(courseId);
-    return FormatData(course);
+    return FormateData(course);
   }
 
   async getCoursesByCategory(category) {
     const courses = await this.repository.findCoursesByCategory(category);
-    return FormatData(courses);
+    return FormateData(courses);
   }
 
   async getEnrolledCourses(enrolledIds) {
     const courses = await this.repository.findSelectedCourses(enrolledIds);
-    return FormatData(courses);
+    return FormateData(courses);
   }
 
   async GetCoursePayload(userId, { courseId, status }, event) {
@@ -51,9 +51,9 @@ class CourseService {
         data: { userId, course, status }
       };
 
-      return FormatData(payload);
+      return FormateData(payload);
     } else {
-      return FormatData({ error: 'Course not available' });
+      return FormateData({ error: 'Course not available' });
     }
   }
 }
