@@ -1,21 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { MdMenu, MdShoppingCart } from "react-icons/md";
+import { MdShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useSidebarContext } from "../context/sidebar_context";
+// import { useSidebarContext } from "../context/sidebar_context";
 import { useCartContext } from "../context/cart_context";
-import udemyLogo from "../assets/images/logo_udemy.png";
 
 const Navbar = () => {
   const { total_items } = useCartContext();
-  const { openSidebar } = useSidebarContext();
+  // const { openSidebar } = useSidebarContext();
 
   return (
     <NavbarWrapper className="bg-white flex">
       <div className="container w-100">
         <div className="brand-and-toggler flex flex-between w-100">
           <Link to="/" className="navbar-brand">
-            <h1>SkillSprint</h1>
+            <h1>Sk<span className="text-purple lowercase">i</span>llSprint</h1>
           </Link>
 
           <div className="navbar-btns flex">
@@ -23,19 +22,81 @@ const Navbar = () => {
               <MdShoppingCart size={30} />
               <span className="item-count-badge">{total_items}</span>
             </Link>
-            <button
+            {/* <button
               type="button"
-              className="sidebar-open-btn"
+              className="sidebar-open-btn md:hidden  lg:hidden xl:hidden 2xl:hidden"
               onClick={() => openSidebar()}
             >
               <MdMenu size={30} />
-            </button>
+            </button> */}
+            <div className="hidden md:flex md:space-x-4">
+              {/* <TabsWrapper>
+              <div className="tabs">
+                <ul className="flex flex-wrap">
+                  <li className="tabs-head-item">
+                    <button type="button" className="tab-btn">
+                      Login
+                    </button>
+                  </li>
+                  <li className="tabs-head-item">
+                    <button type="button" className="tab-btn">
+                      SignUp
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </TabsWrapper> */}
+              <BtnWrapper>
+                <div className="action-btns flex">
+                  <Link to = "/login" className="action-btn login-btn">Login</Link>
+                  <Link to="/signup" className="action-btn signup-btn">SignUp</Link>
+                </div>
+              </BtnWrapper>
+            </div>
           </div>
         </div>
       </div>
     </NavbarWrapper>
   );
 };
+
+const BtnWrapper = styled.div`
+  .action-btns {
+    justify-self: flex-start;
+    padding: 4px 8px 30px 18px;
+    margin-top: auto;
+    .action-btn {
+      font-size: 15px;
+      display: inline-block;
+      padding: 6px 16px;
+      font-weight: 700;
+      transition: var(--transition);
+      white-space: nowrap;
+
+      &.login-btn {
+        background-color: transparent;
+        border: 1px solid var(--clr-black);
+        margin-right: 5px;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.9);
+          color: var(--clr-white);
+        }
+      }
+
+      &.signup-btn {
+        background: rgba(0, 0, 0, 0.9);
+        color: var(--clr-white);
+        border: 1px solid rgba(0, 0, 0, 0.9);
+
+        &:hover {
+          background-color: transparent;
+          color: rgba(0, 0, 0, 0.9);
+        }
+      }
+    }
+  }
+`;
 
 const NavbarWrapper = styled.nav`
   position: sticky;

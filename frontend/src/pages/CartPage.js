@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCartContext } from '../context/cart_context';
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 import CartItem from "../components/CartItem";
 import {MdClear} from "react-icons/md";
 
@@ -50,7 +51,7 @@ const CartPage = () => {
             <div className='cart-total'>
               <span className='d-block fs-18 fw-6'>Total:</span>
               <div className='cart-total-value fw-8'>${total_amount.toFixed(2)}</div>
-              <button type = "button" className='checkout-btn bg-purple text-white fw-6'>Checkout</button>
+              <Link to="/checkout"><button type = "button" className='checkout-btn bg-purple text-white fw-6'>Checkout</button></Link>
             </div>
           </div>
           {/* end of cart grid right */}
