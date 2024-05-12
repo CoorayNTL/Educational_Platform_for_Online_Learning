@@ -3,10 +3,10 @@ const { PaymentModel} = require('../models');
 
 class PaymentRepository {
 
-    async CreatePayment({ userId, amount, currency, status, items, receipt }) {
+    async CreatePayment({ user, amount, currency, status, items, receipt }) {
 
         const payment = new PaymentModel({
-            userId, amount, currency, status, items, receipt
+            user, amount, currency, status, items, receipt
         })
 
         const paymentResult = await payment.save();
@@ -20,10 +20,10 @@ class PaymentRepository {
     }
 
     async FindPaymentByUserId(userId) {
-
-        const payment = await PaymentModel.find({ userId:userId });
-        return payment;
-    }
+            
+            const payment = await PaymentModel.find({ 'user.userId': userId });
+            return payment;
+        }
 
     async FindPaymentByCourseId(courseId) {
 
@@ -33,7 +33,7 @@ class PaymentRepository {
 
     async FindpaymentByUserIdAndCourseId(userId, courseId) {
 
-        const payment = await PaymentModel.find({ userId: userId, 'items.course.courseId': courseId });
+        const payment = await PaymentModel.find({ 'user.userId': userId, 'items.course.courseId': courseId });
         return payment;
     }
 

@@ -15,5 +15,6 @@ module.exports = {
   MSG_QUEUE_URL: process.env.MSG_QUEUE_URL,
   USER_SERVICE: "user_service",
   SHOPPING_SERVICE: "shopping_service",
+  PAYMENT_SERVICE: "payment_service",
   ENROLL_COURSE_SERVICE: "enroll_course_service",
 };

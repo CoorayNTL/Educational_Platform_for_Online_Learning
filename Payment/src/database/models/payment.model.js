@@ -3,7 +3,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PaymentSchema = new Schema({
-    userId: { type: String },
+    user: {
+        userId: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+        }
+    },
     amount: { type: Number },
     currency: { type: String, default: 'USD' },
     status: { type: String, enum: ['pending', 'completed', 'cancelled'], default: 'completed' },
@@ -14,6 +22,9 @@ const PaymentSchema = new Schema({
                     type: String,
                     required: true
                 },
+                title: {
+                    type: String,
+                },
                 quantity: {
                     type: Number,
                     required: true,
@@ -22,6 +33,12 @@ const PaymentSchema = new Schema({
             },
         }
     ],
+    credit_card_details: {
+        cardNumber: { type: String },
+        cardHolderName: { type: String },
+        expiryDate: { type: String },
+        cvv: { type: String }
+    },
     receipt: { type: String },
 
 },

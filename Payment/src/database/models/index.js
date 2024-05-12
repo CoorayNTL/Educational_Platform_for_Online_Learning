@@ -1,3 +1,3 @@
 module.exports = {
-    PaymentModel: require('./Payment')
+    PaymentModel: require('./payment.model')
 }
