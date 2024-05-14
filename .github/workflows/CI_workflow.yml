@@ -35,3 +35,16 @@ jobs:
       run: |
         npm ci
         npm test
+
+    - name: Test Enrollment Service
+      working-directory: ./CourseEnrollment
+      run: |
+        npm ci
+        npm test
+        
+    -name: Test Payment Service
+      working-directory: ./Payment
+      run: |
+        npm ci
+        npm test
+    
