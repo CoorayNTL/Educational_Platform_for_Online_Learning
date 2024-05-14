@@ -1,0 +1,61 @@
+name: Deploy on Production
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy_on_prod:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+      
+      - name: Create user Env file
+        working-directory: ./user
+        run: |
+          touch .env
+          echo APP_SECRET=${{ secrets.PROD_APP_SECRET }} >> .env
+          echo MONGODB_URI=${{ secrets.PROD_USER_DB_URL }} >> .env
+          echo MSG_QUEUE_URL=${{ secrets.PROD_MSG_QUEUE_URL }} >> .env
+          echo EXCHANGE_NAME=ONLINE_EDUCATION >> .env
+          echo PORT=8005 >> .env
+          cat .env
+          
+      - name: Create course Env file
+        working-directory: ./course
+        run: |
+          touch .env
+          echo APP_SECRET=${{ secrets.PROD_APP_SECRET }} >> .env
+          echo MONGODB_URI=${{ secrets.PROD_COURSE_DB_URL }} >> .env
+          echo MSG_QUEUE_URL=${{ secrets.PROD_MSG_QUEUE_URL }} >> .env
+          echo EXCHANGE_NAME=ONLINE_EDUCATION >> .env
+          echo PORT=8006 >> .env
+          cat .env
+          
+      - name: Create courseenrollment Env file
+        working-directory: ./courseenrollment
+        run: |
+          touch .env
+          echo APP_SECRET=${{ secrets.PROD_APP_SECRET }} >> .env
+          echo MONGODB_URI=${{ secrets.PROD_COURSE_ENROLLMENT_DB_URL }} >> .env
+          echo MSG_QUEUE_URL=${{ secrets.PROD_MSG_QUEUE_URL }} >> .env
+          echo EXCHANGE_NAME=ONLINE_EDUCATION >> .env
+          echo PORT=8007 >> .env
+          cat .env
+          
+      - name: Generate deployment package
+        run: |
+          zip -r deploy.zip . -x '*.git'
+      
+      # - name: Deploy on EKS PROD Env
+      #   uses: einaregilsson/beanstalk-deploy@v20
+      #   with:
+      #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     application_name: ms_edu_user
+      #     environment_name: Mdeduuser-env
+      #     version_label: "ver-${{ github.sha }}"
+      #     region: ap-south-1
+      #     deployment_package: deploy.zip
