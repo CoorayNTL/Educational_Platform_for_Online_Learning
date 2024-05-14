@@ -29,3 +29,9 @@ jobs:
       run: |
         npm ci
         npm test
+
+    - name: Test Course Service
+      working-directory: ./Course
+      run: |
+        npm ci
+        npm test
