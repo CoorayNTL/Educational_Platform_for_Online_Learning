@@ -1,6 +1,6 @@
 
 module.exports = {
     products: require('./products'),
-    courses: require('./courses'),
+    course: require('./course'),
     appEvents: require('./app-events'),
 }

@@ -1,4 +1,4 @@
-const CustomerService = require("../services/user-service");
+const CustomerService = require("../services/payment-service");
 
 module.exports = (app) => {
 
@@ -10,7 +10,7 @@ module.exports = (app) => {
         //handle subscribe events
         service.SubscribeEvents(payload);
 
-        console.log("============= Course ================");
+        console.log("============= course ================");
         console.log(payload);
         res.json(payload);
 

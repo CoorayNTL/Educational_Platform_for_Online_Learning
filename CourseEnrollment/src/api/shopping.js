@@ -67,7 +67,7 @@ module.exports = (app, channel) => {
     });
 
     app.get('/whoami', (req, res, next) => {
-        return res.status(200).json({ msg: '/shoping : I am Course Service' })
+        return res.status(200).json({ msg: '/shoping : I am course Service' })
     })
 
 }

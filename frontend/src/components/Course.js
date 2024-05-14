@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import StarRating from "../components/StarRating";
 import { useCartContext } from "../context/cart_context";
 
-const Course = (props) => {
+const course = (props) => {
   const {
     id,
     image,
@@ -37,7 +37,7 @@ const Course = (props) => {
         </div>
       </div>
       <div className="item-btns flex">
-        <Link to={`/courses/${id}`} className="item-btn see-details-btn">
+        <Link to={`/course/${id}`} className="item-btn see-details-btn">
           See details
         </Link>
         <Link
@@ -144,4 +144,4 @@ const CourseCard = styled.div`
   }
 `;
 
-export default Course;
+export default course;

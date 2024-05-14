@@ -6,7 +6,7 @@ const courses_reducer = (state, action) => {
     if(action.type === GET_COURSES){
         return {
             ...state,
-            courses: action.payload
+            course: action.payload
         }
     }
 

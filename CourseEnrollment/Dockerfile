@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /app/coursebuy
+WORKDIR /app/courseenrollment
 COPY package.json .
 
 RUN npm install

@@ -1,7 +1,7 @@
 
 module.exports = {
     ProductModel: require('./Product'),
-    CourseModel: require('./Course'),
+    CourseModel: require('./course'),
     RatingAndReviewModel: require('./RatingAndReview'),
     VideosModel: require('./videos'),
 }

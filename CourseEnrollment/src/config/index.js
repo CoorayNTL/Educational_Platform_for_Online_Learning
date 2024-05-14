@@ -1,5 +1,5 @@
 const dotEnv = require("dotenv");
-const { COURSE_SERVICE } = require("../../../Course/src/config");
+const { COURSE_SERVICE } = require("../../../course/src/config");
 
 if (process.env.NODE_ENV !== "prod") {
   const configFile = `./.env.${process.env.NODE_ENV}`;

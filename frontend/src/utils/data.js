@@ -1,11 +1,11 @@
 import { course_images } from "./images";
 
-const courses = [
+const course = [
     {
         id: "xMHCZl",
         category: "python",
         image: course_images.python_5,
-        course_name: "Learn Python: The Complete Python Programming Course",
+        course_name: "Learn Python: The Complete Python Programming course",
         description: "Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!",
         rating_count: 3059,
         rating_star: 4.4,
@@ -51,7 +51,7 @@ const courses = [
             "Have a portfolio of various data analysis projects."
         ],
         content: [
-            "Intro to Course and Python",
+            "Intro to course and Python",
             "Learning Numpy",
             "Data Visualization",
             "Example Projects",
@@ -110,7 +110,7 @@ const courses = [
         content: [
             "Getting Started",
             "The Basics",
-            "User Input",
+            "user Input",
             "Functions and Files",
             "Classes and Objects",
             "Graphics and Animations",
@@ -184,7 +184,7 @@ const courses = [
         id: "3pm9Ab",
         category: "web development",
         image: course_images.web_dev_2,
-        course_name: "The Complete 2020 Fullstack Web Developer Course",
+        course_name: "The Complete 2020 Fullstack Web Developer course",
         description: "Learn HTML5, CSS3, JavaScript, Python, Wagtail CMS, PHP & MySQL from scratch!",
         rating_count: 6200,
         rating_star: 4.3,
@@ -294,7 +294,7 @@ const courses = [
         id: "z9dxdw",
         category: "web development",
         image: course_images.web_dev_5,
-        course_name: "Ultimate Web Designer & Web Developer Course",
+        course_name: "Ultimate Web Designer & Web Developer course",
         description: "Become a Full-Stack Web Designer in 2022 - Learn Everything from Web Design Fundamentals to Front-End Web Development",
         rating_count: 2941,
         rating_star: 4.6,
@@ -482,7 +482,7 @@ const courses = [
             "Use R for Machine Learning Algorithms"
         ],
         content: [
-            "Course Best Practices",
+            "course Best Practices",
             "Windows Installation Set-Up",
             "Mac OS Installation Set-Up",
             "Linux Installation",
@@ -582,8 +582,8 @@ const courses = [
         id: "NkZeqq",
         category: "design",
         image: course_images.design_2,
-        course_name: "Photoshop Master Course: From Beginner to Photoshop Pro",
-        description: "This Adobe Photoshop Beginner Course will teach a Beginner Photoshop user all essentials of Adobe Photoshop CC",
+        course_name: "Photoshop Master course: From Beginner to Photoshop Pro",
+        description: "This Adobe Photoshop Beginner course will teach a Beginner Photoshop user all essentials of Adobe Photoshop CC",
         rating_count: 5066,
         rating_star: 4.9,
         students: 143812,
@@ -603,8 +603,8 @@ const courses = [
         content: [
             "Photoshop Interface & Workspace - For Beginners",
             "Important Photoshop Tools - For Beginners",
-            "Retouching Class - Photoshop Portrait Retouching Course",
-            "Retouching Class 2 - Photoshop Portrait Retouching Course",
+            "Retouching Class - Photoshop Portrait Retouching course",
+            "Retouching Class 2 - Photoshop Portrait Retouching course",
             "Retouching Class 3 - The Instagramer",
             "Bonus Lectures"
         ]
@@ -613,7 +613,7 @@ const courses = [
         id: "bLZepe",
         category: "design",
         image: course_images.design_1,
-        course_name: "User Experience (UX): The Ultimate Guide to Usability and UX",
+        course_name: "user Experience (UX): The Ultimate Guide to Usability and UX",
         description: "Get a job in UX and build your user research and UX design skills with this hands-on user experience training course.",
         rating_count: 6250,
         rating_star: 4.4,
@@ -702,4 +702,4 @@ const courses = [
     },
 ];
 
-export default courses;
+export default course;
