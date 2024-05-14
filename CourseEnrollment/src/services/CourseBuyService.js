@@ -1,5 +1,5 @@
 const { CourseBuyRepository } = require("../database");
-const { FormatData } = require("../utils");
+const { FormateData } = require("../utils");
 
 class CourseBuyService {
     constructor() {
@@ -8,12 +8,12 @@ class CourseBuyService {
 
     async getCourseBuysByUserId(userId) {
         const courseBuys = await this.repository.getCourseBuysByUserId(userId);
-        return FormatData(courseBuys);
+        return FormateData(courseBuys);
     }
 
     async createCourseBuy(courseBuyData) {
         const createdCourseBuy = await this.repository.createCourseBuy(courseBuyData);
-        return FormatData(createdCourseBuy);
+        return FormateData(createdCourseBuy);
     }
 
     async getOrderPayload(userId, orderData, eventType) {
@@ -23,32 +23,32 @@ class CourseBuyService {
                 event: eventType,
                 data: { userId, orderData }
             };
-            return FormatData(payload);
+            return FormateData(payload);
         } else {
-            return FormatData({ error: 'Order not available' });
+            return FormateData({ error: 'Order not available' });
         }
     }
     async deleteCourseBuy(courseBuyId) {
         const deletedCourseBuy = await this.repository.deleteCourseBuy(courseBuyId);
-        return FormatData(deletedCourseBuy);
+        return FormateData(deletedCourseBuy);
     }
 
     async addCourseToCart(userId, courseId, qty) {
         const updatedCourseBuy = await this.repository.addCourseToCart(userId, courseId, qty);
-        return FormatData(updatedCourseBuy);
+        return FormateData(updatedCourseBuy);
     }
 
     async removeCourseFromCart(userId, courseId) {
         const updatedCourseBuy = await this.repository.removeCourseFromCart(userId, courseId);
-        return FormatData(updatedCourseBuy);
+        return FormateData(updatedCourseBuy);
     }
 
     async checkoutCourseBuy(userId) {
         const order = await this.repository.checkoutCourseBuy(userId);
-        return FormatData(order);
+        return FormateData(order);
     }
 
-    async subscribeEvents(payload) {
+    async SubscribeEvents(payload) {
         payload = JSON.parse(payload);
         const { event, data } = payload;
         const { userId, course, qty } = data;

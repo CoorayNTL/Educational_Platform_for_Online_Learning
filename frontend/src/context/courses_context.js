@@ -1,10 +1,10 @@
 import React, {useContext, useReducer, useEffect} from "react";
 import { GET_CATEGORIES, GET_COURSES, GET_SINGLE_COURSE } from "../actions";
 import reducer from "../reducers/courses_reducer";
-import courses from "../utils/data";
+import course from "../utils/data";
 
 const initialState = {
-    courses: [],
+    course: [],
     single_course: {},
     categories: [],
 }
@@ -15,16 +15,16 @@ export const CoursesProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const fetchCourse = () => {
-        dispatch({type: GET_COURSES, payload: courses})
+        dispatch({type: GET_COURSES, payload: course})
     }
 
     const fetchSingleCourse = (id) => {
-        const singleCourse = courses.find(course => course.id === id);
+        const singleCourse = course.find(course => course.id === id);
         dispatch({type: GET_SINGLE_COURSE, payload: singleCourse})
     }
 
     const fetchCategories = () => {
-        const categories = [...new Set(courses.map(item => item.category))];
+        const categories = [...new Set(course.map(item => item.category))];
         dispatch({type: GET_CATEGORIES, payload: categories});
     }
 

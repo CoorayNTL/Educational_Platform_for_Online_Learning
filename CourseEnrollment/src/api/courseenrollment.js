@@ -2,14 +2,15 @@ const CourseBuyService = require("../services/CourseBuyService");
 const { PublishMessage } = require("../utils");
 const UserAuth = require('./middlewares/auth');
 const { USER_SERVICE } = require('../config');
+const { PublishCustomerEvent, SubscribeMessage } = require("../utils");
 
 module.exports = (app, channel) => {
     
     const service = new CourseBuyService();
 
-    SubscribeMessage(channel, service);
+        SubscribeMessage(channel, service);
 
-    app.post('/coursebuy', UserAuth, async (req, res, next) => {
+    app.post('/courseenrollment', UserAuth, async (req, res, next) => {
         const { _id } = req.user;
         const { txnNumber } = req.body;
         const data = await service.createCourseBuy({ _id, txnNumber });
@@ -48,8 +49,8 @@ module.exports = (app, channel) => {
 
     app.post("/ids", async (req, res, next) => {
         const { ids } = req.body;
-        const courses = await service.getSelectedCourses(ids);
-        return res.status(200).json(courses);
+        const course = await service.getSelectedCourses(ids);
+        return res.status(200).json(course);
     });
 
     app.put("/wishlist", UserAuth, async (req, res, next) => {

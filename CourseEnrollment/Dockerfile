@@ -1,13 +1,12 @@
 FROM node
 
-WORKDIR /app/shopping
-
+WORKDIR /app/courseenrollment
 COPY package.json .
 
 RUN npm install
 
 COPY . .
 
-EXPOSE 8003
+EXPOSE 8007
 
-CMD ["npm", "start"]
+CMD ["npm", "start"] 

@@ -1,13 +1,15 @@
 const ShoppingService = require("../services/shopping-service");
+const CourseBuyService = require("../services/CourseBuyService");
 
 module.exports = (app) => {
 
-    const service = new ShoppingService();
+    //const service = new ShoppingService();
+    const service = new CourseBuyService();
 
     app.use('/app-events', async (req, res, next) => {
 
         const { payload } = req.body;
-        console.log("============= Course ================");
+        console.log("============= course ================");
 
         console.log(payload);
 

@@ -19,7 +19,6 @@ module.exports = (app, channel) => {
     });
 
     app.post('/login', async (req, res, next) => {
-
         const { email, password } = req.body;
 
         const { data } = await service.SignIn({ email, password });
@@ -76,6 +75,6 @@ module.exports = (app, channel) => {
     });
 
     app.get('/whoami', (req, res, next) => {
-        return res.status(200).json({ msg: '/user : I am User Service' })
+        return res.status(200).json({ msg: '/user : I am user Service' })
     })
 }

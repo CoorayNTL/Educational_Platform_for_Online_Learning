@@ -41,8 +41,8 @@ module.exports = (app, channel) => {
 
     app.post("/ids", async (req, res, next) => {
         const { ids } = req.body;
-        const courses = await courseService.GetSelectedCourses(ids);
-        return res.status(200).json(courses);
+        const course = await courseService.GetSelectedCourses(ids);
+        return res.status(200).json(course);
     });
 
     app.put("/wishlist", UserAuth, async (req, res, next) => {
@@ -156,12 +156,12 @@ module.exports = (app, channel) => {
 
 
     // To listen
-    SubscribeMessage(channel, courseService);
+    //SubscribeMessage(channel, courseService);
 }
 
-// Path: Course/src/api/products.js
-// Compare this snippet from CourseEnrollment/src/database/repository/CourseRepository.js:
-// const { Course } = require("../models");
+// Path: course/src/api/products.js
+// Compare this snippet from courseenrollment/src/database/repository/CourseRepository.js:
+// const { course } = require("../models");
 
 
 

@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     ],
     role: {
         type: String, enum: ['instructor', 'admin', 'learner'],
-        default: 'learner',
+        default: 'instructor',
         required: true
     },
     cart: [
@@ -77,4 +77,4 @@ UserSchema.methods.cancelCourseEnrollment = function (courseId) {
     return this.save();
 };
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('user', UserSchema);

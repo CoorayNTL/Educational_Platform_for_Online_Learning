@@ -142,7 +142,7 @@ const SingleCoursePage = () => {
         </div>
 
         <div className="course-content mx-auto">
-          <div className="course-sc-title">Course content</div>
+          <div className="course-sc-title">course content</div>
           <ul className="course-content-list">
             {content &&
               content.map((contentItem, idx) => {

@@ -1,7 +1,6 @@
 const { CourseRepository } = require("../database");
-const { FormatData } = require("../utils");
-
-// All business logic for Course management will be here
+const { FormateData } = require("../utils");
+// All business logic for course management will be here
 class CourseService {
 
   constructor() {
@@ -10,36 +9,36 @@ class CourseService {
 
   async createCourse(courseInputs) {
     const courseResult = await this.repository.createCourse(courseInputs);
-    return FormatData(courseResult);
+    return FormateData(courseResult);
   }
 
   async getCourses() {
-    const courses = await this.repository.findAllCourses();
+    const course = await this.repository.findAllCourses();
 
     let categories = {};
-    courses.map(({ category }) => {
+    course.map(({ category }) => {
       categories[category] = category;
     });
 
-    return FormatData({
-      courses,
+    return FormateData({
+      course,
       categories: Object.keys(categories)
     });
   }
 
   async getCourseDescription(courseId) {
     const course = await this.repository.findCourseById(courseId);
-    return FormatData(course);
+    return FormateData(course);
   }
 
   async getCoursesByCategory(category) {
-    const courses = await this.repository.findCoursesByCategory(category);
-    return FormatData(courses);
+    const course = await this.repository.findCoursesByCategory(category);
+    return FormateData(course);
   }
 
   async getEnrolledCourses(enrolledIds) {
-    const courses = await this.repository.findSelectedCourses(enrolledIds);
-    return FormatData(courses);
+    const course = await this.repository.findSelectedCourses(enrolledIds);
+    return FormateData(course);
   }
 
   async GetCoursePayload(userId, { courseId, status }, event) {
@@ -51,9 +50,9 @@ class CourseService {
         data: { userId, course, status }
       };
 
-      return FormatData(payload);
+      return FormateData(payload);
     } else {
-      return FormatData({ error: 'Course not available' });
+      return FormateData({ error: 'course not available' });
     }
   }
 }

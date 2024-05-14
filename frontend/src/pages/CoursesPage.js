@@ -1,20 +1,20 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from "styled-components";
-import Course from "../components/Course";
+import course from "../components/course";
 import { useCoursesContext } from '../context/courses_context';
 
 const CoursesPage = () => {
   const {category} = useParams();
-  const {courses} = useCoursesContext();
+  const {course} = useCoursesContext();
 
   return (
     <CoursesPageWrapper>
       <div className='container'>
         <div className='category-based-list'>
           {
-            courses.filter(course => course.category === category).map((course) => (
-              <Course key = {course.id} {...course} />
+            course.filter(course => course.category === category).map((course) => (
+              <course key = {course.id} {...course} />
             ))
           }
         </div>

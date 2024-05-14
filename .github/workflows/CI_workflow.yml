@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  ci_verification:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+        
+      - name: Test User Service
+        working-directory: ./User
+        run: |
+          npm ci
+          npm test
+
+      - name: Test Course Service
+        working-directory: ./Course
+        run: |
+          npm ci
+          npm test
+
+      - name: Test Enrollment Service
+        working-directory: ./CourseEnrollment
+        run: |
+          npm ci
+          npm test
+        
+      - name: Test Payment Service
+        working-directory: ./Payment
+        run: |
+          npm ci
+          npm test
