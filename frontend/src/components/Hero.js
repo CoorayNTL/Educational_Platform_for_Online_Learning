@@ -8,9 +8,9 @@ const Hero = () => {
       <div className="container h-100 flex">
         <div className="hero-content">
           <h1>Learning for all</h1>
-          <p>Huge sale on courses from $9.99. Ends Aug. 31.</p>
+          <p>Huge sale on course from $9.99. Ends Aug. 31.</p>
           <p>
-            Thousands of courses to help you succeed in your goals at work and
+            Thousands of course to help you succeed in your goals at work and
             in life.
           </p>
         </div>

@@ -1,6 +1,6 @@
 
 module.exports = {
     shopping: require('./shopping'),
-    coursebuy: require('./coursebuy'),
+    courseenrollment: require('./courseenrollment'),
     appEvents: require('./app-events'),
 }

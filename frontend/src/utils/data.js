@@ -1,6 +1,6 @@
 import { course_images } from "./images";
 
-const courses = [
+const course = [
     {
         id: "xMHCZl",
         category: "python",
@@ -702,4 +702,4 @@ const courses = [
     },
 ];
 
-export default courses;
+export default course;

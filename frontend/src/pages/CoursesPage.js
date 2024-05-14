@@ -6,14 +6,14 @@ import { useCoursesContext } from '../context/courses_context';
 
 const CoursesPage = () => {
   const {category} = useParams();
-  const {courses} = useCoursesContext();
+  const {course} = useCoursesContext();
 
   return (
     <CoursesPageWrapper>
       <div className='container'>
         <div className='category-based-list'>
           {
-            courses.filter(course => course.category === category).map((course) => (
+            course.filter(course => course.category === category).map((course) => (
               <course key = {course.id} {...course} />
             ))
           }

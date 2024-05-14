@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const { products, appEvents ,courses} = require("./api");
+const { products, appEvents ,course} = require("./api");
 
 const { CreateChannel } = require("./utils");
 
@@ -14,7 +14,7 @@ module.exports = async (app) => {
   // appEvents(app);
 
   const channel = await CreateChannel();
-  courses(app, channel);
+  course(app, channel);
 
   // error handling
 };

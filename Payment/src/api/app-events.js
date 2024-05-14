@@ -1,4 +1,4 @@
-const CustomerService = require("../services/user-service");
+const CustomerService = require("../services/payment-service");
 
 module.exports = (app) => {
 

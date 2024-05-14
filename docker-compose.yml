@@ -37,7 +37,7 @@ services:
       context: ./courseenrollment
     container_name: courseenrollment
     ports:
-      - "8003:8003"
+      - "8007:8007"
     restart: always
     depends_on:
       - "nosql-db"
@@ -53,7 +53,7 @@ services:
       context: ./user
     container_name: user
     ports:
-      - "8001:8001"
+      - "8005:8005"
     restart: always
     depends_on:
       - "nosql-db"

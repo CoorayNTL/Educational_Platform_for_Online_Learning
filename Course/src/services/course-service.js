@@ -13,15 +13,15 @@ class CourseService {
   }
 
   async getCourses() {
-    const courses = await this.repository.findAllCourses();
+    const course = await this.repository.findAllCourses();
 
     let categories = {};
-    courses.map(({ category }) => {
+    course.map(({ category }) => {
       categories[category] = category;
     });
 
     return FormateData({
-      courses,
+      course,
       categories: Object.keys(categories)
     });
   }
@@ -32,13 +32,13 @@ class CourseService {
   }
 
   async getCoursesByCategory(category) {
-    const courses = await this.repository.findCoursesByCategory(category);
-    return FormateData(courses);
+    const course = await this.repository.findCoursesByCategory(category);
+    return FormateData(course);
   }
 
   async getEnrolledCourses(enrolledIds) {
-    const courses = await this.repository.findSelectedCourses(enrolledIds);
-    return FormateData(courses);
+    const course = await this.repository.findSelectedCourses(enrolledIds);
+    return FormateData(course);
   }
 
   async GetCoursePayload(userId, { courseId, status }, event) {

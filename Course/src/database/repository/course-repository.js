@@ -31,8 +31,8 @@ class CourseRepository {
   }
 
   async findCoursesByCategory(category) {
-    const courses = await course.find({ category }).populate('content.videos').populate('RatingAndReview');
-    return courses;
+    const course = await course.find({ category }).populate('content.videos').populate('RatingAndReview');
+    return course;
   }
 
   async updateCourseById(id, updateData) {

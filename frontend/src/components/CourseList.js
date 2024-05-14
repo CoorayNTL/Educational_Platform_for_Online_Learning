@@ -4,20 +4,20 @@ import Tabs from "./Tabs";
 import { useCoursesContext } from "../context/courses_context";
 
 const CourseList = () => {
-  const { courses } = useCoursesContext();
+  const { course } = useCoursesContext();
 
   return (
     <CoursesListWrapper>
       <div className="container">
-        <div className="courses-list-top">
-          <h2>A broad selection of courses</h2>
+        <div className="course-list-top">
+          <h2>A broad selection of course</h2>
           <p>
-            Choose from over 210,000 online video courses with new additions
+            Choose from over 210,000 online video course with new additions
             published every month.
           </p>
         </div>
 
-        <Tabs courses={courses} />
+        <Tabs course={course} />
       </div>
     </CoursesListWrapper>
   );
@@ -25,7 +25,7 @@ const CourseList = () => {
 
 const CoursesListWrapper = styled.div`
   padding: 40px 0;
-  .courses-list-top p {
+  .course-list-top p {
     font-size: 1.8rem;
   }
 `;

@@ -1,4 +1,3 @@
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const amqplib = require("amqplib");
 
@@ -10,13 +9,9 @@ const {
 } = require("../config");
 
 //Utility functions
-module.exports.GenerateSalt = async () => {
-  return await bcrypt.genSalt();
-};
 
-module.exports.GeneratePassword = async (password, salt) => {
-  return await bcrypt.hash(password, salt);
-};
+
+
 
 module.exports.ValidatePassword = async (
   enteredPassword,
