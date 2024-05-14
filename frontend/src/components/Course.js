@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import StarRating from "../components/StarRating";
 import { useCartContext } from "../context/cart_context";
 
-const course = (props) => {
+const Course = (props) => {
   const {
     id,
     image,
@@ -162,4 +162,4 @@ const CourseCard = styled.div`
   }
 `;
 
-export default course;
+export default Course;
