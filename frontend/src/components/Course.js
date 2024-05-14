@@ -4,19 +4,25 @@ import { Link } from "react-router-dom";
 import StarRating from "../components/StarRating";
 import { useCartContext } from "../context/cart_context";
 
-const course = (props) => {
+const Course = (props) => {
   const {
     id,
     image,
     course_name,
     creator,
     actual_price,
-    discounted_price,
+    discount,
     rating_count,
     rating_star,
     category,
   } = props;
   const { addToCart } = useCartContext();
+
+  // Calculate discount percentage
+  const discounted_price = Math.round(
+    (actual_price*((100 - discount)/100))
+  );
+
 
   return (
     <CourseCard>
@@ -33,7 +39,10 @@ const course = (props) => {
         </div>
         <div className="item-price">
           <span className="item-price-new">${discounted_price}</span>
-          <span className="item-price-old">${actual_price}</span>
+          {/* <span className="item-price-old">${actual_price}</span> */}
+          {discount > 0 && (
+            <span className="discount-label">{discount}% off</span>
+          )}
         </div>
       </div>
       <div className="item-btns flex">
@@ -107,6 +116,15 @@ const CourseCard = styled.div`
     }
   }
 
+  .discount-label {
+    font-size: 12px;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+
   .item-btns {
     justify-self: flex-start;
     padding: 4px 8px 30px 18px;
@@ -144,4 +162,4 @@ const CourseCard = styled.div`
   }
 `;
 
-export default course;
+export default Course;

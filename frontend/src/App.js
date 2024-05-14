@@ -4,6 +4,9 @@ import { Home, SingleCourse, Cart, Courses } from "./pages";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import ScrollToTop from "./components/ScrollToTop";
+import Login from "./pages/LoginPage";
+import SignUp from "./pages/SignupPage";
+import Checkout from "./pages/CheckoutPage";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
         <Route path="/course/:id" element={<SingleCourse />} />
         <Route path="/category/:category" element={<Courses />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/checkout" element={<Checkout/>} />
       </Routes>
     </BrowserRouter>
   );

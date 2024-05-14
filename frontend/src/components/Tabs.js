@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import course from "./course";
+import Course from "./Course";
 import {PYTHON, WEB_DEVELOPMENT, DATA_SCIENCE, AWS, DESIGN, MARKETING} from "../utils/constants";
 import course from '../utils/data';
 
@@ -37,7 +37,7 @@ const Tabs = () => {
         <div className='tabs-body'>
           {
             course.filter(course => course.category === activeTab).map((course) => (
-              <course key = {course.id} {...course} />
+              <Course key = {course.id} {...course} />
             ))
           }
         </div>

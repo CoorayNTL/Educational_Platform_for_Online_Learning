@@ -14,7 +14,7 @@ const course = [
         updated_date: "9/2015",
         lang: "english",
         actual_price: 84.99,
-        discounted_price: 9.99,
+        discount: 5,
         what_you_will_learn: [
             "Create their own Python Programs",
             "Become an experienced Python Programmer",
@@ -43,7 +43,7 @@ const course = [
         updated_date: "9/2019",
         lang: "english",
         actual_price: 84.99,
-        discounted_price: 9.99,
+        discount: 5,
         what_you_will_learn: [
             "Have an intermediate skill level of Python programming.",
             "Use the numpy library to create and manipulate arrays.",
@@ -73,7 +73,7 @@ const course = [
         updated_date: "5/2022",
         lang: "english",
         actual_price: 84.99,
-        discounted_price: 9.99,
+        discount: 5,
         what_you_will_learn: [
             "To learn the python language",
             "To learn the CORE skills to understand any programming language",
@@ -100,7 +100,7 @@ const course = [
         updated_date: "9/2019",
         lang: "english",
         actual_price: 29.99,
-        discounted_price: 9.99,
+        discount: 5,
         what_you_will_learn: [
             "Create fully functional Python programs",
             "Learn about loop structures and conditionals",
@@ -159,7 +159,7 @@ const course = [
         updated_date: "11/2020",
         lang: "english",
         actual_price: 84.99,
-        discounted_price: 9.99,
+        discount: 5,
         what_you_will_learn: [
             "Prepare for Industry Certification Exam",
             "Hours and Hours of Video Instruction",

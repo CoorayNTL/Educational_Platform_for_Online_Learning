@@ -33,10 +33,14 @@ const SingleCoursePage = () => {
     updated_date,
     lang,
     actual_price,
-    discounted_price,
+    discount,
     what_you_will_learn: learnItems,
     content,
   } = single_course;
+
+  const discounted_price = Math.round(
+    actual_price * ((100 - discount) / 100)
+  );
 
   return (
     <SingleCourseWrapper>

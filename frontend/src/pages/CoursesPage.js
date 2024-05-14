@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from "styled-components";
-import course from "../components/course";
+import Course from "../components/Course";
 import { useCoursesContext } from '../context/courses_context';
 
 const CoursesPage = () => {
@@ -14,7 +14,7 @@ const CoursesPage = () => {
         <div className='category-based-list'>
           {
             course.filter(course => course.category === category).map((course) => (
-              <course key = {course.id} {...course} />
+              <Course key = {course.id} {...course} />
             ))
           }
         </div>
