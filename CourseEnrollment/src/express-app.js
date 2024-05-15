@@ -14,8 +14,7 @@ module.exports = async (app) => {
     // appEvents(app);
 
     const channel = await CreateChannel()
-
-    shopping(app, channel);
+    
     courseenrollment(app,channel);
     // error handling
     
