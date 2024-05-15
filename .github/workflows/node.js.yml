@@ -52,7 +52,7 @@ jobs:
         run: |
           zip -r deploy.zip . -x '*.git'
       
-      - name: Deploy on EKS PROD Env
+      - name: Deploy on EB PROD Env
         uses: einaregilsson/beanstalk-deploy@v20
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
