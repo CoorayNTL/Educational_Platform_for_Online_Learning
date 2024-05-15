@@ -1,9 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import userService from "../services/userService";
 
 
 const Login = () => {
+  const [email, setEmail] = useState(""); // State for email
+  const [password, setPassword] = useState(""); // State for password
+  const history = useNavigate(); // Get access to the history object for navigation
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Call userService.login with email and password
+      const userData = await userService.login(email, password);
+      // If login is successful, navigate to the home page
+      history.push("/home");
+    } catch (error) {
+      // Handle login error (e.g., display error message)
+      console.error("Login failed:", error);
+    }
+  };
+
   return (
     <LoginWrapper>
       <div className="container">
@@ -15,14 +33,14 @@ const Login = () => {
         </div>
 
         <div className="login-form">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="form-control">
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" />
+                <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
                 <div className="form-control">
                 <label htmlFor="password">Password</label>
-                <input type="password" id="password" />
+                <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <button type="submit" className="btn">
                 Login
