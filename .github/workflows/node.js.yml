@@ -22,6 +22,7 @@ jobs:
           echo EXCHANGE_NAME=ONLINE_EDUCATION >> .env
           echo PORT=8005 >> .env
           cat .env
+        shell: bash
           
       - name: Create course Env file
         working-directory: ./course
@@ -33,6 +34,7 @@ jobs:
           echo EXCHANGE_NAME=ONLINE_EDUCATION >> .env
           echo PORT=8006 >> .env
           cat .env
+        shell: bash
           
       - name: Create courseenrollment Env file
         working-directory: ./courseenrollment
@@ -44,6 +46,7 @@ jobs:
           echo EXCHANGE_NAME=ONLINE_EDUCATION >> .env
           echo PORT=8007 >> .env
           cat .env
+        shell: bash
           
       - name: Generate deployment package
         run: |
